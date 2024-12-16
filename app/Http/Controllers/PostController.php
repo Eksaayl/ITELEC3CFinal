@@ -19,7 +19,7 @@ class PostController extends Controller
     public function index2()
     {
         $posts = Post::latest()->paginate(8);
-        return view('/inspiration', compact('posts'));
+        return view('inspiration', compact('posts'));
     }
 
     // create

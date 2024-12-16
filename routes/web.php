@@ -1,9 +1,9 @@
 <?php
-
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PinterestController;
 use Illuminate\Support\Facades\Route;
 
+// Public routes
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
@@ -28,13 +28,14 @@ Route::get('/testing', function () {
     return view('testing');
 })->name('testing');
 
+// Authenticated routes
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
     'isAdmin:admin'
 ])->group(function () {
-    Route::get('/dashboard', function() {
+    Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
 
@@ -46,27 +47,24 @@ Route::middleware([
         return view('manage-design');
     })->name('manage-design');
 
-    Route::get('/pinterest', [PinterestController::class, 'index'])->name('pinterest');
-
-    Route::get('/', [PinterestController::class, 'index'])->name('pinterest.index');
+    Route::get('/pinterest-dashboard', [PinterestController::class, 'index'])->name('pinterest.index');
     Route::post('/pictures', [PinterestController::class, 'store'])->name('pinterest.store');
-    Route::put('/pictures/{id}', [PinterestController::class, 'update'])->name('pinterest.update'); // For updating pictures
+    Route::put('/pictures/{id}', [PinterestController::class, 'update'])->name('pinterest.update');
     Route::delete('/pictures/{id}', [PinterestController::class, 'destroy'])->name('pinterest.destroy');
     Route::get('/pictures/{id}/comments', [PinterestController::class, 'showComments'])->name('pinterest.comments');
     Route::post('/pictures/{id}/comments', [PinterestController::class, 'storeComment'])->name('pinterest.storeComment');
 
-    Route::get('/manage-post', [PostController::class, 'index'])->name('manage-post');  // list posts view
-    Route::get('/posts-create', [PostController::class, 'create'])->name('posts-create'); // create post view
-    Route::get('/posts/{id}/edit', [PostController::class, 'edit'])->name('posts.edit'); // edit post view
+    Route::get('/manage-post', [PostController::class, 'index'])->name('manage-post');
+    Route::get('/posts-create', [PostController::class, 'create'])->name('posts-create');
+    Route::get('/posts/{id}/edit', [PostController::class, 'edit'])->name('posts.edit');
 });
 
-    Route::get('/inspiration', [PostController::class, 'index2'])->name('/inspiration');  // list posts view
-    Route::post('/posts', [PostController::class, 'store'])->name('posts.store'); // store new post
-    Route::post('/posts/{id}', [PostController::class, 'update'])->name('posts.update'); // update existing post
-    Route::get('/posts/{id}', [PostController::class, 'show'])->name('users.show'); // indiv post view
-    Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy'); // delete post
- 
-
+// Post routes
+Route::get('/inspiration', [PostController::class, 'index2'])->name('inspiration');
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+Route::post('/posts/{id}', [PostController::class, 'update'])->name('posts.update');
+Route::get('/posts/{id}', [PostController::class, 'show'])->name('users.show');
+Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
 
 // Static form view
 Route::get('/form', function () {

@@ -75,7 +75,7 @@
                 </li>
 
                 <li>
-                <a href="{{ route('/inspiration') }}" class="font-semibold  text-gray-50 hover:text-blue-500 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 ">Jobs</a>
+                <a href="{{ route('inspiration') }}" class="font-semibold  text-gray-50 hover:text-blue-500 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 ">Jobs</a>
                 </li>
                 <li>
                 <a href="{{ route('pro') }}"  class="font-semibold  text-gray-50 hover:text-blue-500 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 ">Go Pro</a>

@@ -140,7 +140,7 @@
                 </li>
 
                 <li>
-                <a href="{{ route('/inspiration') }}" class="font-semibold  text-gray-50 hover:text-blue-500 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 {{ request()->is('inspiration') ? 'text-blue-500' : '' }}">Jobs</a>
+                <a href="{{ route('inspiration') }}" class="font-semibold  text-gray-50 hover:text-blue-500 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 {{ request()->is('inspiration') ? 'text-blue-500' : '' }}">Jobs</a>
                 </li>
                 <li>
                 <a href="{{ route('pro') }}"  class="font-semibold  text-gray-50 hover:text-blue-500 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Go Pro</a>
@@ -247,52 +247,7 @@
 </section>
 
 
-<div class="container1" style="display: flex; justify-content: space-between; align-items: flex-start;">
-         <div class="w-fit mx-auto bg-dark rounded-lg shadow dark:border dark:bg-gray-800 dark:border-gray-700">
-            <h1 class="pb-0 sm:p-8 text-xl font-bold leading-tight text-gray-900 dark:text-white text-center">
-                    User List
-                    </h1>
-             <div class="table-container" style="display: flex; justify-content: center; align-items: center; width: 60%; margin: 0 auto;">
-        <table>
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>User ID</th>
-                    <th>Created At</th>
-                    <th style="text-align: center">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($posts as $post)
-                <tr>
-                    <td class="">{{ $post->id }}</td>
-                    <td class="">{{ $post->name }}</td>
-                    <td class="">{{ $post->age }}</td>
-                    <td class="">{{ $post->title }}</td>
-                    <td class="">{{ $post->description }}</td>
-                    <td class="">{{ $post->user->name }}</td>
-                    <td class="whitespace-nowrap overflow-hidden overflow-ellipsis max-w-xs">{{ $post->created_at->diffForHumans() }}</td>
-                <td class="actions">
-                    <a href="/posts/{{ $post->id }}" class="btn1">View</a>
-                </td>
-                </tr>
 
-                @endforeach
-            </tbody>
-        </table>
-    
-        </div>
-        {{$posts->links()}}
-        </div>
-                </div>
-            </div>
-        </section>
-    </div>
-</div>
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>               
             <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.5.1/flowbite.min.js"></script>
