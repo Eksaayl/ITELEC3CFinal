@@ -12,7 +12,7 @@ class PinterestController extends Controller
     public function index()
     {
         $pictures = Picture::with('user')->latest()->get(); // Eager load user relationships
-        return view('pinterest.index', compact('pictures'));
+        return view('test', compact('pictures'));
     }
 
     public function store(Request $request)
@@ -20,7 +20,7 @@ class PinterestController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'image' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
+            'image' => 'required|image|mimes:jpg,jpeg,png,gif|max:10240',
         ]);
 
         $path = $request->file('image')->store('pictures', 'public');
@@ -32,7 +32,7 @@ class PinterestController extends Controller
             'user_id' => Auth::id(),
         ]);
 
-        return redirect()->route('pinterest.index')->with('success', 'Photo uploaded successfully!');
+        return redirect()->route('test')->with('success', 'Photo uploaded successfully!');
     }
 
     public function destroy($id)

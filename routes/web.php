@@ -1,9 +1,10 @@
 <?php
+
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PinterestController;
 use Illuminate\Support\Facades\Route;
 
-// Public routes
+// Public routes (Guest side)
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
@@ -28,7 +29,10 @@ Route::get('/testing', function () {
     return view('testing');
 })->name('testing');
 
-// Authenticated routes
+// Guest route for the Test page
+Route::get('/test', [PinterestController::class, 'index'])->name('test');
+
+// Authenticated routes (Admin side)
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -47,12 +51,12 @@ Route::middleware([
         return view('manage-design');
     })->name('manage-design');
 
-    Route::get('/pinterest-dashboard', [PinterestController::class, 'index'])->name('pinterest.index');
-    Route::post('/pictures', [PinterestController::class, 'store'])->name('pinterest.store');
-    Route::put('/pictures/{id}', [PinterestController::class, 'update'])->name('pinterest.update');
-    Route::delete('/pictures/{id}', [PinterestController::class, 'destroy'])->name('pinterest.destroy');
-    Route::get('/pictures/{id}/comments', [PinterestController::class, 'showComments'])->name('pinterest.comments');
-    Route::post('/pictures/{id}/comments', [PinterestController::class, 'storeComment'])->name('pinterest.storeComment');
+    // Admin routes for Pinterest
+    Route::post('/pictures', [PinterestController::class, 'store'])->name('test.store');
+    Route::put('/pictures/{id}', [PinterestController::class, 'update'])->name('test.update');
+    Route::delete('/pictures/{id}', [PinterestController::class, 'destroy'])->name('test.destroy');
+    Route::get('/pictures/{id}/comments', [PinterestController::class, 'showComments'])->name('test.comments');
+    Route::post('/pictures/{id}/comments', [PinterestController::class, 'storeComment'])->name('test.storeComment');
 
     Route::get('/manage-post', [PostController::class, 'index'])->name('manage-post');
     Route::get('/posts-create', [PostController::class, 'create'])->name('posts-create');
