@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PinterestController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -45,7 +46,15 @@ Route::middleware([
         return view('manage-design');
     })->name('manage-design');
 
-    
+    Route::get('/pinterest', [PinterestController::class, 'index'])->name('pinterest');
+
+    Route::get('/', [PinterestController::class, 'index'])->name('pinterest.index');
+    Route::post('/pictures', [PinterestController::class, 'store'])->name('pinterest.store');
+    Route::put('/pictures/{id}', [PinterestController::class, 'update'])->name('pinterest.update'); // For updating pictures
+    Route::delete('/pictures/{id}', [PinterestController::class, 'destroy'])->name('pinterest.destroy');
+    Route::get('/pictures/{id}/comments', [PinterestController::class, 'showComments'])->name('pinterest.comments');
+    Route::post('/pictures/{id}/comments', [PinterestController::class, 'storeComment'])->name('pinterest.storeComment');
+
     Route::get('/manage-post', [PostController::class, 'index'])->name('manage-post');  // list posts view
     Route::get('/posts-create', [PostController::class, 'create'])->name('posts-create'); // create post view
     Route::get('/posts/{id}/edit', [PostController::class, 'edit'])->name('posts.edit'); // edit post view
