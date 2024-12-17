@@ -63,6 +63,17 @@ Route::post('/posts/{id}', [PostController::class, 'update'])->name('posts.updat
 Route::get('/posts/{id}', [PostController::class, 'show'])->name('users.show');
 Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
 
+
+Route::post('/pictures/{id}/comments', [PinterestController::class, 'addComment'])->middleware('auth');
+Route::post('/pictures/{id}/comments', [PinterestController::class, 'addComment'])
+    ->name('test.addComment')
+    ->middleware('auth');
+
+    Route::delete('/comments/{id}', [PinterestController::class, 'deleteComment'])
+    ->name('test.deleteComment')
+    ->middleware('auth');
+
+
 Route::post('/pictures', [PinterestController::class, 'store'])->name('test.store');
 Route::put('/pictures/{id}', [PinterestController::class, 'update'])->name('test.update');
 Route::delete('/pictures/{id}', [PinterestController::class, 'destroy'])->name('test.destroy');

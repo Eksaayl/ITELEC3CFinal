@@ -11,7 +11,10 @@ class PinterestController extends Controller
 {
     public function index()
     {
-        $pictures = Picture::with('user')->latest()->get(); // Eager load user relationships
+        $pictures = Picture::with(['user', 'comments' => function ($query) {
+            $query->with('user')->latest(); // Load comments with user and order them
+        }])->latest()->get();
+    
         return view('test', compact('pictures'));
     }
 
@@ -85,5 +88,33 @@ class PinterestController extends Controller
         return response()->json(['success' => true, 'message' => 'Picture updated successfully!']);
     }
 
+    public function addComment(Request $request, $id)
+{
+    $request->validate([
+        'body' => 'required|string|max:255',
+    ]);
+
+    Comment::create([
+        'picture_id' => $id,
+        'user_id' => Auth::id(),
+        'body' => $request->body,
+    ]);
+
+    return back()->with('success', 'Comment added successfully!');
+}
+
+public function deleteComment($id)
+{
+    $comment = Comment::findOrFail($id);
+
+    // Authorization: Allow only comment owner or admin
+    if ($comment->user_id === Auth::id() || Auth::user()->role === 'admin') {
+
+        $comment->delete();
+        return back()->with('success', 'Comment deleted successfully!');
+    }
+
+    return back()->with('error', 'Unauthorized action.');
+}
 
 }

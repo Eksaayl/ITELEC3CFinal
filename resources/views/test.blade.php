@@ -307,7 +307,14 @@
             <div class="w-1/2">
                 <img id="modal-image" src="" alt="Image" class="w-full h-full object-cover">
             </div>
+            
             <div class="w-1/2 flex flex-col p-6 justify-between relative">
+            <div class="flex justify-center space-x-4">
+                    <button id="delete-btn"
+                        class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">Delete</button>
+                    <button onclick="hideModal('view-modal')"
+                        class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">Close</button>
+                </div>
                 <button id="edit-btn"
                     class="absolute top-4 right-4 bg-gray-100 hover:bg-gray-200 text-gray-800 p-2 rounded-full shadow">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -321,12 +328,46 @@
                     <p id="modal-description" class="text-gray-600 mb-4"></p>
                     <p id="modal-uploader" class="text-gray-500 mb-4"></p>
                 </div>
-                <div class="flex justify-end space-x-4">
-                    <button id="delete-btn"
-                        class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">Delete</button>
-                    <button onclick="hideModal('view-modal')"
-                        class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">Close</button>
-                </div>
+              
+
+                <!-- Comment Section -->
+<div class="mt-4">
+    <h4 class="font-bold text-lg mb-2">Comments</h4>
+
+<!-- Comments Section -->
+<div id="comments-section">
+    @foreach ($picture->comments as $comment)
+        <div class="border-b py-2 flex justify-between items-start">
+            <div>
+                <strong>{{ $comment->user->name }}</strong>
+                <p class="text-gray-700">{{ $comment->body }}</p>
+                <small class="text-gray-500">{{ $comment->created_at->diffForHumans() }}</small>
+            </div>
+            @if (auth()->id() === $comment->user_id || auth()->user()->role === 'admin')
+                <!-- Delete Button -->
+                <form action="{{ route('test.deleteComment', $comment->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">X</button>
+                </form>
+            @endif
+        </div>
+    @endforeach
+</div>
+
+    <!-- Add New Comment -->
+    @auth
+        <form action="{{ route('test.addComment', $picture->id) }}" method="POST">
+            @csrf
+            <textarea name="body" class="w-full p-2 border rounded" placeholder="Write a comment..." required></textarea>
+            <button type="submit" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                Post Comment
+            </button>
+        </form>
+    @else
+        <p class="text-gray-600">You need to <a href="{{ route('login') }}" class="text-blue-500">log in</a> to comment.</p>
+    @endauth
+</div>
             </div>
         </div>
     </div>

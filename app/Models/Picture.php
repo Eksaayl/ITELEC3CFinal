@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Comment;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 
 class Picture extends Model
 {
@@ -35,5 +37,6 @@ class Picture extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class);
+
     }
 }
