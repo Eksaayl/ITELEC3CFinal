@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -91,6 +92,7 @@
         }
     </style>
 </head>
+
 <body class="antialiased">
     <!-- Original Navbar -->
     <nav class="bg-white border-gray-200 dark:bg-gray-900">
@@ -99,18 +101,18 @@
                 <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
                 <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Dribble</span>
             </a>
-            
+
             <div class="flex md:order-2">
                 <button type="button" data-collapse-toggle="navbar-search" aria-controls="navbar-search" aria-expanded="false" class="md:hidden text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 me-1">
                     <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                     </svg>
                     <span class="sr-only">Search</span>
                 </button>
                 <div class="relative hidden md:block">
                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                         <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                         </svg>
                         <span class="sr-only">Search icon</span>
                     </div>
@@ -119,7 +121,7 @@
                 <button data-collapse-toggle="navbar-search" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-search" aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
                     <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
                     </svg>
                 </button>
             </div>
@@ -127,7 +129,7 @@
                 <div class="relative mt-3 md:hidden">
                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                         <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                         </svg>
                     </div>
                     <input type="text" id="search-navbar" class="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search...">
@@ -144,9 +146,9 @@
                     </li>
                     <li>
                         <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="font-semibold flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
-                            Find Designers 
+                            Find Designers
                             <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                             </svg>
                         </button>
                         <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
@@ -162,14 +164,14 @@
                     </li>
                     <li>
                         @if (Route::has('login'))
-                            @auth
-                            <a href="{{ url('dashboard') }}" class="font-semibold text-gray-50 hover:text-blue-500 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
-                            @else
-                                <a href="{{ route('login') }}" class="font-semibold text-gray-50 hover:text-blue-500 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
-                                @if (Route::has('register'))
-                                    <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-50 hover:text-blue-500 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-                                @endif
-                            @endauth
+                        @auth
+                        <a href="{{ url('dashboard') }}" class="font-semibold text-gray-50 hover:text-blue-500 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
+                        @else
+                        <a href="{{ route('login') }}" class="font-semibold text-gray-50 hover:text-blue-500 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
+                        @if (Route::has('register'))
+                        <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-50 hover:text-blue-500 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                        @endif
+                        @endauth
                         @endif
                     </li>
                 </ul>
@@ -187,18 +189,17 @@
         </div>
     </nav>
 
-<!-- Main Content with proper spacing -->
-<main class="grid-container">
+    <!-- Main Content with proper spacing -->
+    <main class="grid-container">
         <div class="grid" id="masonry-grid">
             @foreach ($pictures as $picture)
-                <div class="grid-item" onclick="openModal('{{ $picture->image_url }}', '{{ $picture->title }}', '{{ $picture->description }}', '{{ $picture->user->name }}', '{{ route('test.destroy', $picture->id) }}', '{{ $picture->id }}')">
-                    <img 
-                        src="{{ $picture->image_url }}" 
-                        alt="{{ $picture->title }}"
-                        onerror="this.src='/placeholder.jpg';"
-                        loading="lazy"
-                    >
-                </div>
+            <div class="grid-item" onclick="openModal('{{ $picture->image_url }}', '{{ $picture->title }}', '{{ $picture->description }}', '{{ $picture->user->name }}', '{{ route('test.destroy', $picture->id) }}', '{{ $picture->id }}')">
+                <img
+                    src="{{ $picture->image_url }}"
+                    alt="{{ $picture->title }}"
+                    onerror="this.src='/placeholder.jpg';"
+                    loading="lazy">
+            </div>
             @endforeach
         </div>
     </main>
@@ -263,18 +264,26 @@
                 <img id="modal-image" src="" alt="Image" class="w-full h-full object-cover">
             </div>
             <div class="w-1/2 flex flex-col p-6 justify-between relative">
+                @auth
+                @if (Auth::user()->id === $picture->user_id || Auth::user()->role === 'admin')
                 <button id="edit-btn" class="absolute top-4 right-4 bg-gray-100 hover:bg-gray-200 text-gray-800 p-2 rounded-full shadow">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536M16.5 3a2.121 2.121 0 113 3l-8.01 8.01a4 4 0 01-1.414.586L7 16l.404-3.404a4 4 0 01.586-1.414L16.5 3z" />
                     </svg>
                 </button>
+                @endif
+                @endauth
                 <div>
                     <h3 id="modal-title" class="text-2xl font-bold mb-4"></h3>
                     <p id="modal-description" class="text-gray-600 mb-4"></p>
                     <p id="modal-uploader" class="text-gray-500 mb-4"></p>
                 </div>
                 <div class="flex justify-end space-x-4">
+                    @auth
+                    @if (Auth::user()->role === 'admin')
                     <button id="delete-btn" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">Delete</button>
+                    @endif
+                    @endauth
                     <button onclick="hideModal('view-modal')" class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">Close</button>
                 </div>
             </div>
@@ -365,7 +374,7 @@
 
             // Grid layout functionality
             const grid = document.getElementById('masonry-grid');
-            
+
             function resizeMasonryItem(item) {
                 const rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
                 const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('gap'));
@@ -396,129 +405,130 @@
             window.addEventListener('resize', resizeAllGridItems);
             initLayout();
 
-          // Modal triggers continued
-          addPhotoBtn.addEventListener('click', () => showModal('add-photo-modal'));
+            // Modal triggers continued
+            addPhotoBtn.addEventListener('click', () => showModal('add-photo-modal'));
 
-// Form handling
-const editPhotoForm = document.getElementById('edit-photo-form');
-editPhotoForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const formData = new FormData(this);
-    const updateUrl = this.action;
+            // Form handling
+            const editPhotoForm = document.getElementById('edit-photo-form');
+            editPhotoForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(this);
+                const updateUrl = this.action;
 
-    fetch(updateUrl, {
-        method: 'POST',
-        body: formData,
-        headers: {
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            alert('Photo updated successfully!');
-            location.reload();
-        } else {
-            alert('Error updating photo');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Error updating photo');
-    })
-    .finally(() => {
-        hideModal('edit-photo-modal');
-    });
-});
+                fetch(updateUrl, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert('Photo updated successfully!');
+                            location.reload();
+                        } else {
+                            alert('Error updating photo');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Error updating photo');
+                    })
+                    .finally(() => {
+                        hideModal('edit-photo-modal');
+                    });
+            });
 
-// Add photo form handling
-const addPhotoForm = document.getElementById('add-photo-form');
-addPhotoForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const formData = new FormData(this);
+            // Add photo form handling
+            const addPhotoForm = document.getElementById('add-photo-form');
+            addPhotoForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(this);
 
-    fetch(this.action, {
-        method: 'POST',
-        body: formData,
-        headers: {
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-        }
-    })
-    .then(response => {
-        if (response.ok) {
-            alert('Photo uploaded successfully!');
-            location.reload();
-        } else {
-            throw new Error('Failed to upload photo');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Error uploading photo');
-    })
-    .finally(() => {
-        hideModal('add-photo-modal');
-    });
-});
+                fetch(this.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                        }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            alert('Photo uploaded successfully!');
+                            location.reload();
+                        } else {
+                            throw new Error('Failed to upload photo');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Error uploading photo');
+                    })
+                    .finally(() => {
+                        hideModal('add-photo-modal');
+                    });
+            });
 
-// View modal function
-window.openModal = function(imageUrl, title, description, uploaderName, deleteUrl, pictureId) {
-    document.getElementById('modal-image').src = imageUrl;
-    document.getElementById('modal-title').innerText = title;
-    document.getElementById('modal-description').innerText = description;
-    document.getElementById('modal-uploader').innerText = `Uploaded by: ${uploaderName}`;
+            // View modal function
+            window.openModal = function(imageUrl, title, description, uploaderName, deleteUrl, pictureId) {
+                document.getElementById('modal-image').src = imageUrl;
+                document.getElementById('modal-title').innerText = title;
+                document.getElementById('modal-description').innerText = description;
+                document.getElementById('modal-uploader').innerText = `Uploaded by: ${uploaderName}`;
 
-    // Set up edit button
-    const editBtn = document.getElementById('edit-btn');
-    editBtn.onclick = function() {
-        hideModal('view-modal');
-        const updateUrl = `/test/${pictureId}`;
-        openEditModal(pictureId, title, description, updateUrl);
-    };
+                // Set up edit button
+                const editBtn = document.getElementById('edit-btn');
+                editBtn.onclick = function() {
+                    hideModal('view-modal');
+                    const updateUrl = `/test/${pictureId}`;
+                    openEditModal(pictureId, title, description, updateUrl);
+                };
 
-    // Set up delete button
-    const deleteBtn = document.getElementById('delete-btn');
-    deleteBtn.onclick = function() {
-        if (confirm('Are you sure you want to delete this image?')) {
-            fetch(deleteUrl, {
-                method: 'DELETE',
-                headers: {
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    alert('Image deleted successfully!');
-                    location.reload();
-                } else {
-                    alert('Error deleting image!');
-                }
-            })
-            .catch(() => alert('Error deleting image!'));
-        }
-    };
+                // Set up delete button
+                const deleteBtn = document.getElementById('delete-btn');
+                deleteBtn.onclick = function() {
+                    if (confirm('Are you sure you want to delete this image?')) {
+                        fetch(deleteUrl, {
+                                method: 'DELETE',
+                                headers: {
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                                }
+                            })
+                            .then(response => {
+                                if (response.ok) {
+                                    alert('Image deleted successfully!');
+                                    location.reload();
+                                } else {
+                                    alert('Error deleting image!');
+                                }
+                            })
+                            .catch(() => alert('Error deleting image!'));
+                    }
+                };
 
-    showModal('view-modal');
-};
+                showModal('view-modal');
+            };
 
-// Edit modal function
-window.openEditModal = function(pictureId, title, description, updateUrl) {
-    document.getElementById('edit-title').value = title;
-    document.getElementById('edit-description').value = description;
-    editPhotoForm.action = updateUrl;
-    showModal('edit-photo-modal');
-};
+            // Edit modal function
+            window.openEditModal = function(pictureId, title, description, updateUrl) {
+                document.getElementById('edit-title').value = title;
+                document.getElementById('edit-description').value = description;
+                editPhotoForm.action = updateUrl;
+                showModal('edit-photo-modal');
+            };
 
-// Close modals on background click
-const modals = document.querySelectorAll('.modal');
-modals.forEach(modal => {
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            hideModal(modal.id);
-        }
-    });
-});
-});
-</script>
+            // Close modals on background click
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        hideModal(modal.id);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
+
 </html>
