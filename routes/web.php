@@ -51,13 +51,6 @@ Route::middleware([
         return view('manage-design');
     })->name('manage-design');
 
-    // Admin routes for Pinterest
-    Route::post('/pictures', [PinterestController::class, 'store'])->name('test.store');
-    Route::put('/pictures/{id}', [PinterestController::class, 'update'])->name('test.update');
-    Route::delete('/pictures/{id}', [PinterestController::class, 'destroy'])->name('test.destroy');
-    Route::get('/pictures/{id}/comments', [PinterestController::class, 'showComments'])->name('test.comments');
-    Route::post('/pictures/{id}/comments', [PinterestController::class, 'storeComment'])->name('test.storeComment');
-
     Route::get('/manage-post', [PostController::class, 'index'])->name('manage-post');
     Route::get('/posts-create', [PostController::class, 'create'])->name('posts-create');
     Route::get('/posts/{id}/edit', [PostController::class, 'edit'])->name('posts.edit');
@@ -69,6 +62,10 @@ Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 Route::post('/posts/{id}', [PostController::class, 'update'])->name('posts.update');
 Route::get('/posts/{id}', [PostController::class, 'show'])->name('users.show');
 Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
+
+Route::post('/pictures', [PinterestController::class, 'store'])->name('test.store');
+Route::put('/pictures/{id}', [PinterestController::class, 'update'])->name('test.update');
+Route::delete('/pictures/{id}', [PinterestController::class, 'destroy'])->name('test.destroy');
 
 // Static form view
 Route::get('/form', function () {

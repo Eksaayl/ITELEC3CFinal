@@ -49,26 +49,41 @@ class PinterestController extends Controller
         return response()->json(['success' => true, 'message' => 'Picture deleted successfully!']);
     }
 
-public function update(Request $request, $id)
-{
-    $request->validate([
-        'title' => 'required|string|max:255',
-        'description' => 'nullable|string',
-        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-    ]);
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:10240', // Optional image
+        ]);
 
-    $picture = Picture::findOrFail($id);
-    $picture->title = $request->title;
-    $picture->description = $request->description;
+        $picture = Picture::findOrFail($id);
 
-    if ($request->hasFile('image')) {
-        $path = $request->file('image')->store('pictures', 'public');
-        $picture->image_url = '/storage/' . $path;
+        // Authorization check: ensure the user owns the picture
+        if ($picture->user_id !== Auth::id()) {
+            return response()->json(['error' => 'Unauthorized action'], 403);
+        }
+
+        // Update title and description
+        $picture->title = $request->title;
+        $picture->description = $request->description;
+
+        // Handle new image upload (delete old image if exists)
+        if ($request->hasFile('image')) {
+            // Delete old image if it exists
+            if ($picture->image_url && file_exists(public_path($picture->image_url))) {
+                unlink(public_path($picture->image_url));
+            }
+
+            // Store new image
+            $path = $request->file('image')->store('pictures', 'public');
+            $picture->image_url = '/storage/' . $path;
+        }
+
+        $picture->save();
+
+        return response()->json(['success' => true, 'message' => 'Picture updated successfully!']);
     }
 
-    $picture->save();
-
-    return redirect()->back()->with('success', 'Picture updated successfully!');
-}
 
 }
