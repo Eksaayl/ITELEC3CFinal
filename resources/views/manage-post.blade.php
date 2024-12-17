@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Manage Post') }}
+            {{ __('Manage Art') }}
         </h2>
     </x-slot>
 
@@ -79,7 +79,7 @@
     
     
     <div class="header1">
-        <h1 class="text-white text-center mt-10">User List</h1>
+        <h1 class="text-white text-center mt-10">Art Listing</h1>
     </div>
 
     @if(session('success'))
@@ -97,15 +97,15 @@
     <div class="container1" style="display: flex; justify-content: space-between; align-items: flex-start;">
          <div class="w-fit bg-dark rounded-lg shadow dark:border dark:bg-gray-800 dark:border-gray-700">
             <h1 class="pb-0 sm:p-8 text-xl font-bold leading-tight text-gray-900 dark:text-white">
-                        Add A User
+                        Add An Art
                     </h1>
              <div class="table-container" style="display: flex; justify-content: center; align-items: center; width: 60%; margin: 0 auto;">
         <table>
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Name</th>
-                    <th>Age</th>
+                    <th>Artist</th>
+                    <th>Art Type</th>
                     <th>Title</th>
                     <th>Description</th>
                     <th>User ID</th>
@@ -118,7 +118,7 @@
                 <tr>
                     <td class="">{{ $post->id }}</td>
                     <td class="">{{ $post->name }}</td>
-                    <td class="">{{ $post->age }}</td>
+                    <td class="">{{ $post->art_type }}</td>
                     <td class="">{{ $post->title }}</td>
                     <td class="">{{ $post->description }}</td>
                     <td class="">{{ $post->user->name }}</td>
@@ -158,25 +158,33 @@
                         </div>
                         @endif
                     <h1 class="text-xl font-bold leading-tight text-gray-900 dark:text-white">
-                        Add A User
+                        Add Your Art
                     </h1>
                        
                     <form class="space-y-4" action="/posts" method="POST" novalidate>
                         @csrf
                         <div>
-                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Artist</label>
                             <input type="text" value="{{ old('name') }}" name="name" id="name" class= "bg-gray-50 border border-gray-300 text-sm rounded-lg w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white" @error('name') border-red-500 @enderror required="">
                             @error('name')
                             <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
                              @enderror
                         </div>
                         <div>
-                            <label for="age" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Age</label>
-                            <input type="number" value="{{ old('age') }}" name="age" id="age" class="bg-gray-50 border border-gray-300 text-sm rounded-lg w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white" @error('age') border-red-500 @enderror required="">
-                            @error('age')
-                            <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-                             @enderror
-                        </div>
+    <label for="art_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Art Type</label>
+    <select name="art_type" id="art_type" class="bg-gray-50 border border-gray-300 text-sm rounded-lg w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white" @error('art_type') border-red-500 @enderror required>
+        <option value="" disabled selected>Select Art Type</option>
+        <option value="Painting" {{ old('art_type') == 'Painting' ? 'selected' : '' }}>Painting</option>
+        <option value="Sculpture" {{ old('art_type') == 'Sculpture' ? 'selected' : '' }}>Sculpture</option>
+        <option value="Digital" {{ old('art_type') == 'Digital' ? 'selected' : '' }}>Digital</option>
+        <option value="Photography" {{ old('art_type') == 'Photography' ? 'selected' : '' }}>Photography</option>
+        <option value="Drawing" {{ old('art_type') == 'Drawing' ? 'selected' : '' }}>Drawing</option>
+    </select>
+    @error('art_type')
+    <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+    @enderror
+</div>
+
                         <div>
                             <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
                             <input type="text" value="{{ old('title') }}" name="title" id="title" class="bg-gray-50 border border-gray-300 text-sm rounded-lg w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white" @error('title') border-red-500 @enderror required="">

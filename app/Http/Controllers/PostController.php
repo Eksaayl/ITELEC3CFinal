@@ -34,7 +34,7 @@ class PostController extends Controller
         
         $request->validate([
             'name' => 'required|string|max:255',
-            'age' => 'required|integer|min:1',
+            'art_type' => 'required|string|max:255',
             'title' => 'required|string|unique:posts|max:255',
             'description' => 'required|string',
         ]);
@@ -48,7 +48,7 @@ class PostController extends Controller
 
         Post::insert([
             'name'=> $request->name,
-            'age' => $request->age,
+            'art_type' => $request->art_type,
             'title' => $request->title,
             'description' => $request->description,
             'user_id' => Auth::user()->id,
@@ -71,7 +71,7 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
         $post->name = $request->input('name');
-        $post->age = $request->input('age');
+        $post->art_type = $request->input('art_type');
         $post->title = $request->input('title');
         $post->description = $request->input('description');
         $post->save();

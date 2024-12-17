@@ -70,7 +70,7 @@
         <!-- User Details Display -->
         <div class="w-full max-w-2xl mx-auto mt-8 p-6 bg-white rounded-lg shadow dark:bg-gray-800 text-center">
     <h2 class="text-xl font-bold text-dark-900 dark:text-dark">{{ $post->name }}</h2>
-    <p class="text-gray-700 dark:text-dark-300"><strong>Age:</strong> {{ $post->age }}</p>
+    <p class="text-gray-700 dark:text-dark-300"><strong>Art Type:</strong> {{ $post->art_type }}</p>
     <p class="text-gray-700 dark:text-dark-300"><strong>Title:</strong> {{ $post->title }}</p>
     <p class="text-gray-700 dark:text-dark-300"><strong>Description:</strong> {{ $post->description }}</p>
     <div class="flex justify-center mt-4">

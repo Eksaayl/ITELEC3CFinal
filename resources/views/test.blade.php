@@ -166,6 +166,15 @@
                             class="font-semibold text-gray-50 hover:text-blue-500 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 {{ request()->is('pro') ? 'text-blue-500' : '' }}">Go
                             Pro</a>
                     </li>
+
+                    <li>
+                    <a href="{{ route('test') }}" 
+                    class="font-semibold text-gray-50 hover:text-blue-500 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 
+                    {{ request()->routeIs('test') ? 'text-blue-500' : '' }}">
+                        Art Gallery
+                    </a>
+                </li>
+
                     <li>
                         <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
                             class="font-semibold flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
@@ -336,38 +345,45 @@
 
 <!-- Comments Section -->
 <div id="comments-section">
-    @foreach ($picture->comments as $comment)
-        <div class="border-b py-2 flex justify-between items-start">
-            <div>
-                <strong>{{ $comment->user->name }}</strong>
-                <p class="text-gray-700">{{ $comment->body }}</p>
-                <small class="text-gray-500">{{ $comment->created_at->diffForHumans() }}</small>
+    @if (isset($picture) && $picture->comments->count() > 0)
+        @foreach ($picture->comments as $comment)
+            <div class="border-b py-2 flex justify-between items-start">
+                <div>
+                    <strong>{{ $comment->user->name ?? 'Unknown User' }}</strong>
+                    <p class="text-gray-700">{{ $comment->body }}</p>
+                    <small class="text-gray-500">{{ $comment->created_at->diffForHumans() }}</small>
+                </div>
+                @if (auth()->check() && (auth()->id() === $comment->user_id || auth()->user()->role === 'admin'))
+                    <!-- Delete Button -->
+                    <form action="{{ route('test.deleteComment', $comment->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">X</button>
+                    </form>
+                @endif
             </div>
-            @if (auth()->id() === $comment->user_id || auth()->user()->role === 'admin')
-                <!-- Delete Button -->
-                <form action="{{ route('test.deleteComment', $comment->id) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">X</button>
-                </form>
-            @endif
-        </div>
-    @endforeach
+        @endforeach
+    @else
+        <!-- Message when there are no comments -->
+        <p class="text-gray-500 italic">No comments available for this picture.</p>
+    @endif
 </div>
 
-    <!-- Add New Comment -->
+<!-- Add New Comment -->
+@if (isset($picture))
     @auth
         <form action="{{ route('test.addComment', $picture->id) }}" method="POST">
             @csrf
-            <textarea name="body" class="w-full p-2 border rounded" placeholder="Write a comment..." required></textarea>
-            <button type="submit" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-                Post Comment
+            <textarea name="body" placeholder="Add your comment" class="w-full p-2 border rounded mb-2"></textarea>
+            <button type="submit" class="text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded">
+                Add Comment
             </button>
         </form>
-    @else
-        <p class="text-gray-600">You need to <a href="{{ route('login') }}" class="text-blue-500">log in</a> to comment.</p>
     @endauth
-</div>
+@else
+    <p class="text-gray-500 italic">Picture not found. Cannot add comments.</p>
+@endif
+
             </div>
         </div>
     </div>
@@ -576,10 +592,11 @@
                 // Set up edit button
                 const editBtn = document.getElementById('edit-btn');
                 editBtn.onclick = function () {
-                    hideModal('view-modal');
+                   
                     const updateUrl = `/test/${pictureId}`;
                     openEditModal(pictureId, title, description, updateUrl);
                 };
+                
 
                 // Set up delete button
                 const deleteBtn = document.getElementById('delete-btn');

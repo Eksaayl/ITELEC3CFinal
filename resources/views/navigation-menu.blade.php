@@ -31,7 +31,7 @@
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="{{ route('manage-post') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Manage Post') }}
+                        {{ __('Manage Art') }}
                     </x-nav-link>
                 </div>
 
